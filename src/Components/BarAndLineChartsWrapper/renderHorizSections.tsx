@@ -9,6 +9,7 @@ import {
   horizSectionPropTypes,
   chartTypes,
 } from 'gifted-charts-core';
+import {renderBackgroundSlices} from './renderBackgroundSlices';
 
 export const renderHorizSections = (props: horizSectionPropTypes) => {
   const {
@@ -67,6 +68,11 @@ export const renderHorizSections = (props: horizSectionPropTypes) => {
     customBackground,
     allowFontScaling,
   } = props;
+
+  // Extract additional props for background slices (using type assertion since these are not in core types)
+  const data = (props as any).data;
+  const initialSpacing = (props as any).initialSpacing;
+  const showBackgroundSlices = (props as any).showBackgroundSlices;
 
   const {
     secondaryYAxisConfig,
@@ -525,6 +531,24 @@ export const renderHorizSections = (props: horizSectionPropTypes) => {
               })
             ) : (
               <>
+              {showBackgroundSlices && chartType === chartTypes.LINE ? (
+                  <View
+                    style={{
+                      position: 'absolute',
+                      left: yAxisLabelWidth + initialSpacing,
+                      top: 0,
+                      bottom: 0,
+                      right: 0,
+                      zIndex: -1,
+                    }}>
+                    {renderBackgroundSlices({
+                      data: data || [],
+                      endSpacing,
+                      totalWidth,
+                      width,
+                    })}
+                  </View>
+                ) : null}
                 {customBackground ? (
                   <View
                     style={{

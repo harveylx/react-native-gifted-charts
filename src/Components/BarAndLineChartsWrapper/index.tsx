@@ -82,6 +82,9 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
     extraWidthDueToDataPoint = 0, // extraWidthDueToDataPoint will be receved from props onlhy in case of LineCharts, for other charts it will be undefined and will default to 0
   } = props;
 
+  // Extract showBackgroundSlices prop (using type assertion since it's not in core types)
+  const showBackgroundSlices = (props as any).showBackgroundSlices;
+
   const {
     containerHeightIncludingBelowXAxis,
     xAxisLabelsVerticalShift,
@@ -146,6 +149,10 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
             ...horizSectionProps,
             onlyReferenceLines: false,
             renderReferenceLines: !referenceLinesOverChartContent,
+            //@ts-ignore  Remove this ts-ignore when the types are updated to include showBackgroundSlices// @ts-ignore
+            data,
+            initialSpacing,
+            showBackgroundSlices,
           })
         : null}
       <ScrollView
@@ -267,10 +274,24 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
         </Fragment>
       </ScrollView>
       {referenceLinesOverChartContent
-        ? renderHorizSections({...horizSectionProps, onlyReferenceLines: true})
+        ? renderHorizSections({
+            ...horizSectionProps,
+            onlyReferenceLines: true,
+            // @ts-ignore  Remove this ts-ignore when the types are updated to include showBackgroundSlices// @ts-ignore
+            data,
+            initialSpacing,
+            showBackgroundSlices,
+          })
         : null}
       {horizSectionProps.floatingYAxisLabels &&
-        renderHorizSections({...horizSectionProps, onlyLabels: true})}
+        renderHorizSections({
+          ...horizSectionProps,
+          onlyLabels: true,
+          // @ts-ignore  Remove this ts-ignore when the types are updated to include showBackgroundSlices// @ts-ignore
+          data,
+          initialSpacing,
+          showBackgroundSlices,
+        })}
     </View>
   );
 };
