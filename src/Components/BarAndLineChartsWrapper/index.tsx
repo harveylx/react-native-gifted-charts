@@ -14,6 +14,7 @@ import {
   BarAndLineChartsWrapperTypes,
   useBarAndLineChartsWrapper,
 } from 'gifted-charts-core';
+import {renderBackgroundSlices} from './renderBackgroundSlices';
 
 const isCloseToRight = (
   {layoutMeasurement, contentOffset, contentSize}: NativeScrollEvent,
@@ -149,10 +150,6 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
             ...horizSectionProps,
             onlyReferenceLines: false,
             renderReferenceLines: !referenceLinesOverChartContent,
-            //@ts-ignore  Remove this ts-ignore when the types are updated to include showBackgroundSlices// @ts-ignore
-            data,
-            initialSpacing,
-            showBackgroundSlices,
           })
         : null}
       <ScrollView
@@ -245,6 +242,23 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
         }}
         {...remainingScrollViewProps}>
         <Fragment>
+          {showBackgroundSlices && chartType === chartTypes.LINE ? (
+            <View
+              style={{
+                position: 'absolute',
+                bottom: 60 + xAxisLabelsVerticalShift,
+                left: initialSpacing,
+                height: containerHeightIncludingBelowXAxis,
+                width: totalWidth,
+                zIndex: -1,
+              }}>
+              {renderBackgroundSlices({
+                data: data || [],
+                endSpacing,
+                totalWidth,
+              })}
+            </View>
+          ) : null}
           {showVerticalLines ? (
             <RenderVerticalLines {...verticalLinesProps} />
           ) : null}
@@ -277,20 +291,12 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
         ? renderHorizSections({
             ...horizSectionProps,
             onlyReferenceLines: true,
-            // @ts-ignore  Remove this ts-ignore when the types are updated to include showBackgroundSlices// @ts-ignore
-            data,
-            initialSpacing,
-            showBackgroundSlices,
           })
         : null}
       {horizSectionProps.floatingYAxisLabels &&
         renderHorizSections({
           ...horizSectionProps,
           onlyLabels: true,
-          // @ts-ignore  Remove this ts-ignore when the types are updated to include showBackgroundSlices// @ts-ignore
-          data,
-          initialSpacing,
-          showBackgroundSlices,
         })}
     </View>
   );

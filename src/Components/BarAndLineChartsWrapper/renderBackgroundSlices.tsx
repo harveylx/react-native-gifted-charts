@@ -5,7 +5,6 @@ interface RenderBackgroundSlicesProps {
   data: any[];
   endSpacing?: number;
   totalWidth: number;
-  width?: number;
 }
 
 export const renderBackgroundSlices = (
@@ -14,7 +13,6 @@ export const renderBackgroundSlices = (
   const {
     data,
     totalWidth,
-    width,
     endSpacing = 0,
   } = props;
 
@@ -23,7 +21,7 @@ export const renderBackgroundSlices = (
   }
 
   // Calculate total chart width
-  const totalChartWidth = (width ?? totalWidth) - endSpacing;
+  const totalChartWidth = totalWidth - endSpacing;
 
   // Each slice gets equal width based on TOTAL data length (not filtered)
   const sliceWidth = totalChartWidth / data.length;
@@ -38,8 +36,8 @@ export const renderBackgroundSlices = (
     // Use original data index for position
     return (
       <View
-        key={`bg-slice-${index}`}
-        style={{
+          key={`bg-slice-${item.id}-${index}`}
+          style={{
           position: 'absolute',
           left: sliceWidth * index,
           top: 0,
