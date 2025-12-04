@@ -51,4 +51,4 @@ export {
   type GridConfig,
   type GridSectionConfig,
   type AsterLinesConfig,
-} from 'gifted-charts-core';
+} from '@harveylx/gifted-charts-core';

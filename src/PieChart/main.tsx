@@ -14,7 +14,7 @@ import {
   getPieChartMainProps,
   PieChartMainProps,
   pieColors,
-} from 'gifted-charts-core';
+} from '@harveylx/gifted-charts-core';
 import {isWebApp, rnVersion} from '../utils';
 
 export const PieChartMain = (props: PieChartMainProps) => {

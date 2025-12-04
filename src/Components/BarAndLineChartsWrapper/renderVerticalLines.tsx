@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {chartTypes} from 'gifted-charts-core';
+import {chartTypes} from '@harveylx/gifted-charts-core';
 import {Line, Svg} from 'react-native-svg';
 
 const RenderVerticalLines = (props: any) => {

@@ -3,7 +3,7 @@ import {View, Text, Animated} from 'react-native';
 import Svg, {Defs, Rect} from 'react-native-svg';
 import Cap from '../Components/BarSpecificComponents/cap';
 import LinearGradient from '../Components/common/LinearGradient';
-import {Animated2DWithGradientPropsType} from 'gifted-charts-core';
+import {Animated2DWithGradientPropsType} from '@harveylx/gifted-charts-core';
 
 const Animated2DWithGradient = (props: Animated2DWithGradientPropsType) => {
   const {

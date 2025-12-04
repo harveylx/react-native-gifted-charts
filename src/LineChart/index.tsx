@@ -43,7 +43,7 @@ import {
   pointsWithPaddedRepititions,
   lineDataItemNullSafe,
   Linecap,
-} from 'gifted-charts-core';
+} from '@harveylx/gifted-charts-core';
 import BarAndLineChartsWrapper from '../Components/BarAndLineChartsWrapper';
 import {StripAndLabel} from '../Components/common/StripAndLabel';
 import {Pointer} from '../Components/common/Pointer';
@@ -57,8 +57,6 @@ export const LineChart = (props: LineChartPropsType) => {
   // const heightValue = useMemo(() => new Animated.Value(0), []);
   const widthValue = useMemo(() => new Animated.Value(0), []);
   const widthValue2 = useMemo(() => new Animated.Value(0), []);
-
-  const showBackgroundSlices = (props as any).showBackgroundSlices;
   const widthValue3 = useMemo(() => new Animated.Value(0), []);
   const widthValue4 = useMemo(() => new Animated.Value(0), []);
   const widthValue5 = useMemo(() => new Animated.Value(0), []);
@@ -2890,8 +2888,7 @@ export const LineChart = (props: LineChartPropsType) => {
       renderChartContent={renderChartContent}
       remainingScrollViewProps={remainingScrollViewProps}
       nestedScrollEnabled={props.nestedScrollEnabled}
-      //@ts-ignore  Remove this ts-ignore when the types are updated to include showBackgroundSlices// @ts-ignore
-      showBackgroundSlices={showBackgroundSlices}
+      showBackgroundSlices={props.showBackgroundSlices}
     />
   );
 };

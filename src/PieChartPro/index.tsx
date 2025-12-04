@@ -3,7 +3,7 @@ import {
   PieChartPropsType,
   pieColors,
   usePiePro,
-} from 'gifted-charts-core';
+} from '@harveylx/gifted-charts-core';
 import {
   Defs,
   Path,

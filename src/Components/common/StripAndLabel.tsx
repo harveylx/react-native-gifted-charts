@@ -3,7 +3,7 @@ import Svg, {Line} from 'react-native-svg';
 import {
   StripAndLabelProps,
   getTopAndLeftForStripAndLabel,
-} from 'gifted-charts-core';
+} from '@harveylx/gifted-charts-core';
 
 export const StripAndLabel = (props: StripAndLabelProps) => {
   const {

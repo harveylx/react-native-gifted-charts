@@ -1,6 +1,6 @@
 import {View, Text, TextStyle} from 'react-native';
 import {PieChartMain} from './main';
-import {PieChartPropsType, pieColors, usePieChart} from 'gifted-charts-core';
+import {PieChartPropsType, pieColors, usePieChart} from '@harveylx/gifted-charts-core';
 import {isWebApp} from '../utils';
 import {useState} from 'react';
 

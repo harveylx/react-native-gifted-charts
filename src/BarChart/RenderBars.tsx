@@ -5,7 +5,7 @@ import {
   getPropsForAnimated2DWithGradient,
   RenderBarsPropsType,
   useRenderBars,
-} from 'gifted-charts-core';
+} from '@harveylx/gifted-charts-core';
 import Tooltip from '../Components/BarSpecificComponents/tooltip';
 
 const isIndexSelected = (values: number | number[], idx: number) => {

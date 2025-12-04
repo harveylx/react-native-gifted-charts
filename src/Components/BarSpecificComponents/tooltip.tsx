@@ -1,4 +1,4 @@
-import {TooltipProps} from 'gifted-charts-core/dist/utils/types';
+import {TooltipProps} from '@harveylx/gifted-charts-core/dist/utils/types';
 import {useState} from 'react';
 import {View} from 'react-native';
 

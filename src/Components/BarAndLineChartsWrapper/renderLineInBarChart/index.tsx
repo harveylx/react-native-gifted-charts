@@ -4,8 +4,8 @@ import Svg, {Path} from 'react-native-svg';
 import {renderSpecificVerticalLines} from './renderSpecificVerticalLines';
 import {renderDataPoints} from './renderDataPoints';
 import {renderSpecificDataPoints} from './renderSpecificDataPoints';
-import {LineInBarChartPropsType} from 'gifted-charts-core';
-import {DataPointProps} from 'gifted-charts-core';
+import {LineInBarChartPropsType} from '@harveylx/gifted-charts-core';
+import {DataPointProps} from '@harveylx/gifted-charts-core';
 import {isIos} from '../../../utils';
 
 const RenderLineInBarChart = (props: LineInBarChartPropsType) => {

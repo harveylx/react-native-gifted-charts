@@ -13,7 +13,7 @@ import {
   yAxisSides,
   BarAndLineChartsWrapperTypes,
   useBarAndLineChartsWrapper,
-} from 'gifted-charts-core';
+} from '@harveylx/gifted-charts-core';
 import {renderBackgroundSlices} from './renderBackgroundSlices';
 
 const isCloseToRight = (
@@ -81,10 +81,8 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
     onScrollEndDrag,
     nestedScrollEnabled,
     extraWidthDueToDataPoint = 0, // extraWidthDueToDataPoint will be receved from props onlhy in case of LineCharts, for other charts it will be undefined and will default to 0
+    showBackgroundSlices,
   } = props;
-
-  // Extract showBackgroundSlices prop (using type assertion since it's not in core types)
-  const showBackgroundSlices = (props as any).showBackgroundSlices;
 
   const {
     containerHeightIncludingBelowXAxis,

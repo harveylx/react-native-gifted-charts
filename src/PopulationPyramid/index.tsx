@@ -5,7 +5,7 @@ import {
   RulesProps,
   ruleTypes,
   usePopulationPyramid,
-} from 'gifted-charts-core';
+} from '@harveylx/gifted-charts-core';
 import {
   ClipPath,
   Line,

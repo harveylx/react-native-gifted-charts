@@ -14,7 +14,7 @@ import {
   BarChartPropsType,
   useBarAndLineChartsWrapper,
   useBarChart,
-} from 'gifted-charts-core';
+} from '@harveylx/gifted-charts-core';
 import {StripAndLabel} from '../Components/common/StripAndLabel';
 import {Pointer} from '../Components/common/Pointer';
 import {screenWidth} from '../utils';

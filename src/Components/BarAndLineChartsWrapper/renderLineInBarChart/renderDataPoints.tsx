@@ -1,14 +1,14 @@
 import React, {Fragment, useState} from 'react';
 import {styles} from '../../../BarChart/styles';
 import {TouchableOpacity, View} from 'react-native';
-import {getXForLineInBar, getYForLineInBar} from 'gifted-charts-core';
+import {getXForLineInBar, getYForLineInBar} from '@harveylx/gifted-charts-core';
 import {
   Rect,
   Text as CanvasText,
   Circle,
   ForeignObject,
 } from 'react-native-svg';
-import {DataPointProps} from 'gifted-charts-core';
+import {DataPointProps} from '@harveylx/gifted-charts-core';
 import {isWebApp} from '../../../utils';
 
 export const renderDataPoints = (props: DataPointProps) => {

@@ -8,7 +8,7 @@ import {
   HorizSectionsType,
   horizSectionPropTypes,
   chartTypes,
-} from 'gifted-charts-core';
+} from '@harveylx/gifted-charts-core';
 
 export const renderHorizSections = (props: horizSectionPropTypes) => {
   const {

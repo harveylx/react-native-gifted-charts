@@ -13,7 +13,7 @@ import Svg, {
   TSpan,
 } from 'react-native-svg';
 
-import {RadarChartProps, useRadarChart} from 'gifted-charts-core';
+import {RadarChartProps, useRadarChart} from '@harveylx/gifted-charts-core';
 
 export const RadarChart = (props: RadarChartProps) => {
   const {

@@ -6,7 +6,7 @@ import {
   useRenderStackBars,
   BarDefaults,
   StackedBarChartPropsType,
-} from 'gifted-charts-core';
+} from '@harveylx/gifted-charts-core';
 import Tooltip from '../Components/BarSpecificComponents/tooltip';
 
 const RenderStackBars = (props: StackedBarChartPropsType) => {

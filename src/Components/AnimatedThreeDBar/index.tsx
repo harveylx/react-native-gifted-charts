@@ -7,7 +7,7 @@ import {
   useAnimatedThreeDBar,
   animatedBarPropTypes,
   trianglePropTypes,
-} from 'gifted-charts-core';
+} from '@harveylx/gifted-charts-core';
 
 const TriangleCorner = (props: trianglePropTypes) => {
   return (
