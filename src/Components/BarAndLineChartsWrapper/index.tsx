@@ -246,7 +246,7 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
             <View
               style={{
                 position: 'absolute',
-                bottom: 60 + xAxisLabelsVerticalShift,
+                bottom: 61 + xAxisLabelsVerticalShift,
                 left: initialSpacing,
                 height: containerHeightIncludingBelowXAxis,
                 width: totalWidth,
