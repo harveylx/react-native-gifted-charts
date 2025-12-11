@@ -45,7 +45,7 @@ export const renderBackgroundSlices = (
           width: sliceWidth,
           backgroundColor: item.backgroundSliceColor as ColorValue,
           zIndex: -100,
-          opacity: 0.5,
+          opacity: 1,
         }}
       />
     );

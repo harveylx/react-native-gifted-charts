@@ -4,14 +4,15 @@ import {LineChart} from '../../src/LineChart';
 
 const LineChartTwo = () => {
   const lineData = [
-    {value: 0},
-    {value: 10},
-    {value: 8},
-    {value: 58},
-    {value: 56},
-    {value: 78},
-    {value: 74},
-    {value: 98},
+    { value: 0,  backgroundSliceColor: '#FFCCCC' },
+    { value: 10, backgroundSliceColor: '#FFCCCC' },
+    { value: 58, backgroundSliceColor: '#FFCCCC' },
+    { value: 78, backgroundSliceColor: '#CFE2F3' },
+    { value: 74, backgroundSliceColor: '#CFE2F3' },
+    { value: 98, backgroundSliceColor: '#EAD1DC' },
+    { value: 52, backgroundSliceColor: '#EAD1DC' },
+    { value: 71, backgroundSliceColor: '#a2f59bff' },
+    { value: 60, backgroundSliceColor: '#b7fab1ff' },
   ];
 
   const lineData2 = [
@@ -31,6 +32,8 @@ const LineChartTwo = () => {
         data2={lineData2}
         height={250}
         showValuesAsDataPointsText
+        //@ts-ignore  Remove this ts-ignore when the types are updated to include showBackgroundSlices// @ts-ignore
+        showBackgroundSlices={true}
         showVerticalLines
         spacing={44}
         initialSpacing={0}

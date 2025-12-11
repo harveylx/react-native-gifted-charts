@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {LineChart} from '../../src/LineChart';
-import { ruleTypes } from 'gifted-charts-core';
+import { ruleTypes } from '@harveylx/gifted-charts-core';
 
 const CaloriesBurnt = () => {
   const data1 = [

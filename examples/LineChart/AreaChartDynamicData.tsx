@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text} from 'react-native';
 import {LineChart} from '../../src/LineChart';
-import {ruleTypes,clone} from 'gifted-charts-core';
+import {ruleTypes,clone} from '@harveylx/gifted-charts-core';
 
 const AreaChartDynamicData = () => {
   const lcomp = v => (

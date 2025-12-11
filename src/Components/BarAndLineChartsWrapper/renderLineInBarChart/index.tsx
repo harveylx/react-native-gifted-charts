@@ -6,7 +6,7 @@ import {renderDataPoints} from './renderDataPoints';
 import {renderSpecificDataPoints} from './renderSpecificDataPoints';
 import {LineInBarChartPropsType} from '@harveylx/gifted-charts-core';
 import {DataPointProps} from '@harveylx/gifted-charts-core';
-import {isIos} from '../../../utils';
+import {isIos, isWebApp} from '../../../utils';
 
 const RenderLineInBarChart = (props: LineInBarChartPropsType) => {
   const {
