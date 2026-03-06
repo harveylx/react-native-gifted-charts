@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@react-native/babel-preset": "^0.76.9",
-    "@harveylx/gifted-charts-core": "0.1.732"
+    "@harveylx/gifted-charts-core": "0.1.73"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.8",
