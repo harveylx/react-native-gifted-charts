@@ -1,8 +1,10 @@
 import React from 'react';
-import {View, ColorValue} from 'react-native';
+import {View, PixelRatio} from 'react-native';
+import {BackgroundSlice} from '@harveylx/gifted-charts-core';
 
 interface RenderBackgroundSlicesProps {
-  data: any[];
+  backgroundSlices: BackgroundSlice[];
+  dataLength: number;
   endSpacing?: number;
   totalWidth: number;
 }
@@ -11,39 +13,33 @@ export const renderBackgroundSlices = (
   props: RenderBackgroundSlicesProps,
 ) => {
   const {
-    data,
+    backgroundSlices,
+    dataLength,
     totalWidth,
     endSpacing = 0,
   } = props;
 
-  if (!data || data.length === 0) {
+  if (!backgroundSlices.length || dataLength === 0) {
     return null;
   }
 
-  // Calculate total chart width
   const totalChartWidth = totalWidth - endSpacing;
+  const unitWidth = totalChartWidth / dataLength;
 
-  // Each slice gets equal width based on TOTAL data length (not filtered)
-  const sliceWidth = totalChartWidth / data.length;
+  return backgroundSlices.map((slice, i) => {
+    const left = PixelRatio.roundToNearestPixel(unitWidth * slice.from);
+    const right = PixelRatio.roundToNearestPixel(unitWidth * slice.to);
 
-  // Map over ALL data items, preserving original index positions
-  return data.map((item: any, index: number) => {
-    // Skip rendering if no background slice color specified
-    if (!item.backgroundSliceColor) {
-      return null;
-    }
-
-    // Use original data index for position
     return (
       <View
-          key={`bg-slice-${item.id}-${index}`}
-          style={{
+        key={`bg-slice-${i}`}
+        style={{
           position: 'absolute',
-          left: sliceWidth * index,
+          left,
           top: 0,
           bottom: 0,
-          width: sliceWidth,
-          backgroundColor: item.backgroundSliceColor as ColorValue,
+          width: right - left,
+          backgroundColor: slice.color,
           zIndex: -100,
           opacity: 1,
         }}

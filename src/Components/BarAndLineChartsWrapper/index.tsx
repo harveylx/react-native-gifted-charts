@@ -81,7 +81,7 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
     onScrollEndDrag,
     nestedScrollEnabled,
     extraWidthDueToDataPoint = 0, // extraWidthDueToDataPoint will be receved from props onlhy in case of LineCharts, for other charts it will be undefined and will default to 0
-    showBackgroundSlices,
+    backgroundSlices,
   } = props;
 
   const {
@@ -240,7 +240,7 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
         }}
         {...remainingScrollViewProps}>
         <Fragment>
-          {showBackgroundSlices && chartType === chartTypes.LINE ? (
+          {backgroundSlices?.length && chartType === chartTypes.LINE ? (
             <View
               style={{
                 position: 'absolute',
@@ -251,7 +251,8 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
                 zIndex: -1,
               }}>
               {renderBackgroundSlices({
-                data: data || [],
+                backgroundSlices,
+                dataLength: data?.length ?? 0,
                 endSpacing,
                 totalWidth,
               })}

@@ -2890,7 +2890,7 @@ export const LineChart = (props: LineChartPropsType) => {
       renderChartContent={renderChartContent}
       remainingScrollViewProps={remainingScrollViewProps}
       nestedScrollEnabled={props.nestedScrollEnabled}
-      showBackgroundSlices={props.showBackgroundSlices}
+      backgroundSlices={props.backgroundSlices}
     />
   );
 };
