@@ -7,6 +7,7 @@ interface RenderBackgroundSlicesProps {
   dataLength: number;
   endSpacing?: number;
   totalWidth: number;
+  xAxisRange?: number;
 }
 
 export const renderBackgroundSlices = (
@@ -17,18 +18,30 @@ export const renderBackgroundSlices = (
     dataLength,
     totalWidth,
     endSpacing = 0,
+    xAxisRange,
   } = props;
 
-  if (!backgroundSlices.length || dataLength === 0) {
+  if (!backgroundSlices.length) {
+    return null;
+  }
+  if (!xAxisRange && dataLength === 0) {
     return null;
   }
 
   const totalChartWidth = totalWidth - endSpacing;
-  const unitWidth = totalChartWidth / dataLength;
 
   return backgroundSlices.map((slice, i) => {
-    const left = PixelRatio.roundToNearestPixel(unitWidth * slice.from);
-    const right = PixelRatio.roundToNearestPixel(unitWidth * slice.to);
+    let left: number;
+    let right: number;
+
+    if (xAxisRange != null && xAxisRange > 0) {
+      left = PixelRatio.roundToNearestPixel((slice.from / xAxisRange) * totalChartWidth);
+      right = PixelRatio.roundToNearestPixel((slice.to / xAxisRange) * totalChartWidth);
+    } else {
+      const unitWidth = totalChartWidth / dataLength;
+      left = PixelRatio.roundToNearestPixel(unitWidth * slice.from);
+      right = PixelRatio.roundToNearestPixel(unitWidth * slice.to);
+    }
 
     return (
       <View

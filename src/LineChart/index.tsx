@@ -809,7 +809,7 @@ export const LineChart = (props: LineChartPropsType) => {
                 <Fragment key={index}>
                   {customDataPoint ? null : (
                     <Rect
-                      x={getX(spacingArray, index) - dataPointsWidth / 2}
+                      x={getX(spacingArray, index, item.xValue) - dataPointsWidth / 2}
                       y={getYOrSecondaryY(item.value) - dataPointsHeight / 2}
                       width={dataPointsWidth}
                       height={dataPointsHeight}
@@ -841,7 +841,7 @@ export const LineChart = (props: LineChartPropsType) => {
                 <Fragment key={index}>
                   {customDataPoint ? null : (
                     <Circle
-                      cx={getX(spacingArray, index)}
+                      cx={getX(spacingArray, index, item.xValue)}
                       cy={getYOrSecondaryY(item.value)}
                       r={dataPointsRadius}
                       fill={
@@ -932,7 +932,7 @@ export const LineChart = (props: LineChartPropsType) => {
                     fill={item.textColor || textColor}
                     fontSize={item.textFontSize || textFontSize}
                     x={
-                      getX(spacingArray, index) -
+                      getX(spacingArray, index, item.xValue) -
                       dataPointsWidth +
                       (item.textShiftX || props.textShiftX || 0)
                     }
@@ -962,7 +962,7 @@ export const LineChart = (props: LineChartPropsType) => {
   ) => {
     return dataForRender.map((item: lineDataItemNullSafe, index: number) => {
       if (item.showVerticalLine) {
-        const x = getX(spacingArray, index);
+        const x = getX(spacingArray, index, item.xValue);
         return (
           <Line
             key={index}
@@ -1757,9 +1757,28 @@ export const LineChart = (props: LineChartPropsType) => {
   // }
 
   const activatePointers = (x: number) => {
-    let factor = (x - initialSpacing) / (props.spacing1 ?? spacing); // getClosestValueFromSpacingArray(cumulativeSpacing1,x-initialSpacing)
-    factor = Math.round(factor);
-    factor = Math.min(factor, (data0 ?? data).length - 1);
+    const dataArr = data0 ?? data;
+    let factor: number;
+
+    if (props.xAxisRange != null && props.xAxisRange > 0) {
+      const chartArea = totalWidth - initialSpacing - (barAndLineChartsWrapperProps.endSpacing ?? 0);
+      let minDist = Infinity;
+      let nearestIndex = 0;
+      for (let i = 0; i < dataArr.length; i++) {
+        const xPos = initialSpacing + ((dataArr[i].xValue ?? 0) / props.xAxisRange) * chartArea;
+        const dist = Math.abs(x - xPos);
+        if (dist < minDist) {
+          minDist = dist;
+          nearestIndex = i;
+        }
+      }
+      factor = nearestIndex;
+    } else {
+      factor = (x - initialSpacing) / (props.spacing1 ?? spacing);
+      factor = Math.round(factor);
+    }
+
+    factor = Math.min(factor, dataArr.length - 1);
     factor = Math.max(factor, 0);
     let item, y;
     item = (data0 ?? data)[factor];
@@ -1768,6 +1787,7 @@ export const LineChart = (props: LineChartPropsType) => {
         getX(
           dataSet?.length ? cumulativeSpacingForSet[0] : cumulativeSpacing1,
           factor,
+          item.xValue,
         ) -
         (pointerRadius || pointerWidth / 2) -
         1;

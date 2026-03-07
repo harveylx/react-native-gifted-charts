@@ -82,6 +82,7 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
     nestedScrollEnabled,
     extraWidthDueToDataPoint = 0, // extraWidthDueToDataPoint will be receved from props onlhy in case of LineCharts, for other charts it will be undefined and will default to 0
     backgroundSlices,
+    xAxisRange,
   } = props;
 
   const {
@@ -255,6 +256,7 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
                 dataLength: data?.length ?? 0,
                 endSpacing,
                 totalWidth,
+                xAxisRange,
               })}
             </View>
           ) : null}
